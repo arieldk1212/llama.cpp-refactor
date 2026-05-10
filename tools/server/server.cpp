@@ -353,9 +353,9 @@ int main(int argc, char ** argv) {
             monitor_thread.join();
         }
 
-        auto * ll_ctx = ctx_server.get_llama_context();
-        if (ll_ctx != nullptr) {
-            common_memory_breakdown_print(ll_ctx);
+        auto ll_ctx = ctx_server.get_llama_context();
+        if (ll_ctx.has_value()) {
+            common_memory_breakdown_print(*ll_ctx);
         }
     }
 
